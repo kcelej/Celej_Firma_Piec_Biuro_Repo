@@ -11,8 +11,9 @@ public:
 	addFurnaceDialog(QWidget *parent = nullptr);
 	~addFurnaceDialog();
 
+	bool isManualIncluded();
 private:
-	 
+	bool hasManual;
 private slots:
 	void browse();	// browse files on the device
 };

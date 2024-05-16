@@ -4,6 +4,7 @@
 addFurnaceDialog::addFurnaceDialog(QWidget *parent)
 	: QDialog(parent)
 {
+    hasManual = false;
 	setupUi(this);
 
     connect(this->uploadFileButton, SIGNAL(clicked()), SLOT(browse()));
@@ -18,5 +19,10 @@ void addFurnaceDialog::browse() {
     
     if (!filePath.isEmpty()) {
         this->fileNameLabel->setText(filePath);
+        hasManual = true;
     }
+}
+
+bool addFurnaceDialog::isManualIncluded() {
+    return hasManual;
 }

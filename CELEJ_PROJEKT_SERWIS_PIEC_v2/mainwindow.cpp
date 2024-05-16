@@ -21,51 +21,59 @@ void mainWindow::login() {
     userSingleton& user = userSingleton::instance();
 
     do {    // get login and password and search the database for a user with the same credentials
-        loginScreen dialog(this);
+        try {
+            loginScreen dialog(this);
 
-        if (dialog.exec()) {
-            string login = (dialog.loginEdit->text()).toStdString();
-            string password = (dialog.passwordEdit->text()).toStdString();
+            if (dialog.exec()) {
+                string login = (dialog.loginEdit->text()).toStdString();
+                string password = (dialog.passwordEdit->text()).toStdString();
 
-            sql::Driver* driver;
-            sql::Connection* con;
+                sql::Driver* driver;
+                sql::Connection* con;
 
-            driver = get_driver_instance();
-            con = driver->connect(db_ip, db_login, db_password);
+                driver = get_driver_instance();
+                con = driver->connect(db_ip, db_login, db_password);
 
-            sql::Statement* useDB;
-            useDB = con->createStatement();
-            useDB->execute("USE firma_piece");
-            delete useDB;
+                sql::Statement* useDB;
+                useDB = con->createStatement();
+                useDB->execute("USE firma_piece");
+                delete useDB;
 
-            sql::PreparedStatement* checkInfo;
-            checkInfo = con->prepareStatement("SELECT login, haslo, imie, nazwisko, stanowisko FROM pracownicy WHERE login=? && haslo=? && id_pracownika NOT LIKE 1;");
-            checkInfo->setString(1, login);
-            checkInfo->setString(2, password);
-            sql::ResultSet* res;
-            res = checkInfo->executeQuery();
+                sql::PreparedStatement* checkInfo;
+                checkInfo = con->prepareStatement("SELECT login, haslo, imie, nazwisko, stanowisko FROM pracownicy WHERE login=? && haslo=? && usuniety=0;");
+                checkInfo->setString(1, login);
+                checkInfo->setString(2, password);
+                sql::ResultSet* res;
+                res = checkInfo->executeQuery();
 
-            if ((!login.empty() && !password.empty())) {
-                while (res->next()) {
-                    break;
+                if ((!login.empty() && !password.empty())) {
+                    while (res->next()) {
+                        break;
+                    }
+                    if (login == res->getString(1) && password == res->getString(2)) {  // if the credentials are correct log the user in
+                        user.setLogin(res->getString(1));
+                        user.setPassword(res->getString(2));
+                        user.setStatus(1);
+                        user.setName(res->getString(3));
+                        user.setSurname(res->getString(4));
+                        user.setPosition(res->getString(5));
+
+                        delete res;
+                        delete checkInfo;
+                        delete con;
+                        break;
+                    }
                 }
-                if (login == res->getString(1) && password == res->getString(2)) {  // if the credentials are correct log the user in
-                    user.setLogin(res->getString(1));
-                    user.setPassword(res->getString(2));
-                    user.setStatus(1);
-                    user.setName(res->getString(3));
-                    user.setSurname(res->getString(4));
-                    user.setPosition(res->getString(5));
-
-                    delete res;
-                    delete checkInfo;
-                    delete con;
-                    break;
+                else {
+                    throw sql::SQLException();
                 }
+                delete res;
+                delete checkInfo;
+                delete con;
             }
-            delete res;
-            delete checkInfo;
-            delete con;
+        }
+        catch (sql::SQLException) {
+            QMessageBox::information(this, "Błąd podczas logowania", "Podano nieprawidłowe dane.");
         }
     } while (1);
 
