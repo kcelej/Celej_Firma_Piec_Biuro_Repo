@@ -22,7 +22,7 @@ void mainWindow::login() {
 
     do {    // get login and password and search the database for a user with the same credentials
         loginScreen dialog(this);
-        QMessageBox::information(this, "test", "test github");
+        QMessageBox::information(this, "test", "test github 2");
         if (dialog.exec()) {
             string login = (dialog.loginEdit->text()).toStdString();
             string password = (dialog.passwordEdit->text()).toStdString();
