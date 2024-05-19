@@ -113,9 +113,9 @@ void furnacesWidget::on_deleteButton_clicked() {
             if (!ui.furnacesList->currentItem()) {
                 throw exception();
             }
-            yesNoDialog confirmation(this);
-            confirmation.setMessage("Czy na pewno usunąć piec?");
-            if (confirmation.exec()) {
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(this, "Uwaga!", "Czy na pewno usunąć piec?", QMessageBox::Yes | QMessageBox::No);
+            if (reply == QMessageBox::Yes) {
                 sql::Driver* driver;
                 sql::Connection* con;
                 sql::PreparedStatement* deleteFurnace;
