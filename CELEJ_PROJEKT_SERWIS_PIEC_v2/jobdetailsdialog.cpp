@@ -29,180 +29,205 @@ void jobDetailsDialog::setJobId(QString id) {
 }
 
 void jobDetailsDialog::updateCustomerData() {
-	sql::Driver* driver;
-	sql::Connection* con;
-	sql::PreparedStatement* updateCustomerDataQuery;
+	try {
+		sql::Driver* driver;
+		sql::Connection* con;
+		sql::PreparedStatement* updateCustomerDataQuery;
 
-	driver = get_driver_instance();
-	con = driver->connect(db_ip, db_login, db_password);
+		driver = get_driver_instance();
+		con = driver->connect(db_ip, db_login, db_password);
 
-	sql::Statement* useDB;
-	useDB = con->createStatement();
-	useDB->execute("USE firma_piece");
-	delete useDB;
+		sql::Statement* useDB;
+		useDB = con->createStatement();
+		useDB->execute("USE firma_piece");
+		delete useDB;
 
-	updateCustomerDataQuery = con->prepareStatement("SELECT klienci.id_klienta, klienci.imie, klienci.nazwisko, klienci.nr_tel, klienci.adres FROM klienci INNER JOIN zlecenia ON klienci.id_klienta=zlecenia.id_klienta WHERE zlecenia.id_zlecenia=? LIMIT 1");
-	updateCustomerDataQuery->setInt(1, jobId.toInt());
+		updateCustomerDataQuery = con->prepareStatement("SELECT klienci.id_klienta, klienci.imie, klienci.nazwisko, klienci.nr_tel, klienci.adres FROM klienci INNER JOIN zlecenia ON klienci.id_klienta=zlecenia.id_klienta WHERE zlecenia.id_zlecenia=? LIMIT 1");
+		updateCustomerDataQuery->setInt(1, jobId.toInt());
 
-	sql::ResultSet* result;
-	result = updateCustomerDataQuery->executeQuery();
+		sql::ResultSet* result;
+		result = updateCustomerDataQuery->executeQuery();
 
-	while (result->next()) {
-		break;
+		while (result->next()) {
+			break;
+		}
+
+		this->customerIdLabel->setText(QString::number(result->getInt(1)));
+		this->customerNameLabel->setText(QString::fromUtf8(result->getString(2).asStdString()) + " " + QString::fromUtf8(result->getString(3).asStdString()));
+		this->customerPhoneLabel->setText(QString::fromUtf8(result->getString(4).asStdString()));
+		this->customerAddressLabel->setText(QString::fromUtf8(result->getString(5).asStdString()));
+
+		delete updateCustomerDataQuery;
+		delete con;
 	}
-
-	this->customerIdLabel->setText(QString::number(result->getInt(1)));
-	this->customerNameLabel->setText(QString::fromUtf8(result->getString(2).asStdString()) + " " + QString::fromUtf8(result->getString(3).asStdString()));
-	this->customerPhoneLabel->setText(QString::fromUtf8(result->getString(4).asStdString()));
-	this->customerAddressLabel->setText(QString::fromUtf8(result->getString(5).asStdString()));
-
-	delete updateCustomerDataQuery;
-	delete con;
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas łączenia z bazą.");
+	}
 }
 
 void jobDetailsDialog::updateWorkerData() {
-	sql::Driver* driver;
-	sql::Connection* con;
-	sql::PreparedStatement* updateWorkerDataQuery;
+	try {
+		sql::Driver* driver;
+		sql::Connection* con;
+		sql::PreparedStatement* updateWorkerDataQuery;
 
-	driver = get_driver_instance();
-	con = driver->connect(db_ip, db_login, db_password);
+		driver = get_driver_instance();
+		con = driver->connect(db_ip, db_login, db_password);
 
-	sql::Statement* useDB;
-	useDB = con->createStatement();
-	useDB->execute("USE firma_piece");
-	delete useDB;
+		sql::Statement* useDB;
+		useDB = con->createStatement();
+		useDB->execute("USE firma_piece");
+		delete useDB;
 
-	updateWorkerDataQuery = con->prepareStatement("SELECT pracownicy.id_pracownika, pracownicy.imie, pracownicy.nazwisko, pracownicy.nr_tel FROM pracownicy INNER JOIN zlecenia ON pracownicy.id_pracownika=zlecenia.id_pracownika WHERE zlecenia.id_zlecenia=? LIMIT 1");
-	updateWorkerDataQuery->setInt(1, jobId.toInt());
+		updateWorkerDataQuery = con->prepareStatement("SELECT pracownicy.id_pracownika, pracownicy.imie, pracownicy.nazwisko, pracownicy.nr_tel FROM pracownicy INNER JOIN zlecenia ON pracownicy.id_pracownika=zlecenia.id_pracownika WHERE zlecenia.id_zlecenia=? LIMIT 1");
+		updateWorkerDataQuery->setInt(1, jobId.toInt());
 
-	sql::ResultSet* result;
-	result = updateWorkerDataQuery->executeQuery();
+		sql::ResultSet* result;
+		result = updateWorkerDataQuery->executeQuery();
 
-	while (result->next()) {
-		break;
+		while (result->next()) {
+			break;
+		}
+
+		this->workerIdLabel->setText(QString::number(result->getInt(1)));
+		this->workerNameLabel->setText(QString::fromUtf8(result->getString(2).asStdString()) + " " + QString::fromUtf8(result->getString(3).asStdString()));
+		this->workerPhoneLabel->setText(QString::fromUtf8(result->getString(4).asStdString()));
+
+		delete updateWorkerDataQuery;
+		delete con;
 	}
-
-	this->workerIdLabel->setText(QString::number(result->getInt(1)));
-	this->workerNameLabel->setText(QString::fromUtf8(result->getString(2).asStdString()) + " " + QString::fromUtf8(result->getString(3).asStdString()));
-	this->workerPhoneLabel->setText(QString::fromUtf8(result->getString(4).asStdString()));
-
-	delete updateWorkerDataQuery;
-	delete con;
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas łączenia z bazą.");
+	}
 }
 
 void jobDetailsDialog::updateFurnaceData() {
-	sql::Driver* driver;
-	sql::Connection* con;
-	sql::PreparedStatement* updateFurnaceDataQuery;
+	try {
+		sql::Driver* driver;
+		sql::Connection* con;
+		sql::PreparedStatement* updateFurnaceDataQuery;
 
-	driver = get_driver_instance();
-	con = driver->connect(db_ip, db_login, db_password);
+		driver = get_driver_instance();
+		con = driver->connect(db_ip, db_login, db_password);
 
-	sql::Statement* useDB;
-	useDB = con->createStatement();
-	useDB->execute("USE firma_piece");
-	delete useDB;
+		sql::Statement* useDB;
+		useDB = con->createStatement();
+		useDB->execute("USE firma_piece");
+		delete useDB;
 
-	updateFurnaceDataQuery = con->prepareStatement("SELECT piece.producent, piece.model FROM piece INNER JOIN zlecenia ON piece.id_pieca=zlecenia.id_pieca WHERE zlecenia.id_zlecenia=? LIMIT 1");
+		updateFurnaceDataQuery = con->prepareStatement("SELECT piece.producent, piece.model FROM piece INNER JOIN zlecenia ON piece.id_pieca=zlecenia.id_pieca WHERE zlecenia.id_zlecenia=? LIMIT 1");
 
-	updateFurnaceDataQuery->setInt(1, jobId.toInt());
+		updateFurnaceDataQuery->setInt(1, jobId.toInt());
 
-	sql::ResultSet* result;
-	result = updateFurnaceDataQuery->executeQuery();
+		sql::ResultSet* result;
+		result = updateFurnaceDataQuery->executeQuery();
 
-	while (result->next()) {
-		break;
+		while (result->next()) {
+			break;
+		}
+
+		this->furnaceManufacturerLabel->setText(QString::fromUtf8(result->getString(1).asStdString()));
+		this->furnaceModelLabel->setText(QString::fromUtf8(result->getString(2).asStdString()));
+
+
+		delete updateFurnaceDataQuery;
+		delete con;
 	}
-	
-	this->furnaceManufacturerLabel->setText(QString::fromUtf8(result->getString(1).asStdString()));
-	this->furnaceModelLabel->setText(QString::fromUtf8(result->getString(2).asStdString()));
-	
-
-	delete updateFurnaceDataQuery;
-	delete con;
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas łączenia z bazą.");
+	}
 }
 
 void jobDetailsDialog::updateJobStatus() {
-	sql::Driver* driver;
-	sql::Connection* con;
-	sql::PreparedStatement* jobStatusQuery;
+	try {
+		sql::Driver* driver;
+		sql::Connection* con;
+		sql::PreparedStatement* jobStatusQuery;
 
-	driver = get_driver_instance();
-	con = driver->connect(db_ip, db_login, db_password);
+		driver = get_driver_instance();
+		con = driver->connect(db_ip, db_login, db_password);
 
-	sql::Statement* useDB;
-	useDB = con->createStatement();
-	useDB->execute("USE firma_piece");
-	delete useDB;
+		sql::Statement* useDB;
+		useDB = con->createStatement();
+		useDB->execute("USE firma_piece");
+		delete useDB;
 
 
-	if (this->jobStatusLabel->text() == "Zamknięte") {
-		this->jobStatusLabel->setText("Otwarte");
-		jobStatusQuery = con->prepareStatement("UPDATE zlecenia SET status='Otwarte' WHERE zlecenia.id_zlecenia=?");
+		if (this->jobStatusLabel->text() == "Zamknięte") {
+			this->jobStatusLabel->setText("Otwarte");
+			jobStatusQuery = con->prepareStatement("UPDATE zlecenia SET status='Otwarte' WHERE zlecenia.id_zlecenia=?");
+		}
+		else {
+			this->jobStatusLabel->setText("Zamknięte");
+			jobStatusQuery = con->prepareStatement("UPDATE zlecenia SET status='Zamkniete' WHERE zlecenia.id_zlecenia=?");
+		}
+
+		jobStatusQuery->setInt(1, jobId.toInt());
+
+		jobStatusQuery->execute();
+
+		delete jobStatusQuery;
+		delete con;
 	}
-	else {
-		this->jobStatusLabel->setText("Zamknięte");
-		jobStatusQuery = con->prepareStatement("UPDATE zlecenia SET status='Zamkniete' WHERE zlecenia.id_zlecenia=?");
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas łączenia z bazą.");
 	}
-
-	jobStatusQuery->setInt(1, jobId.toInt());
-
-	jobStatusQuery->execute();
-
-	delete jobStatusQuery;
-	delete con;
 }
 
 void jobDetailsDialog::updateJobData() {
-	sql::Driver* driver;
-	sql::Connection* con;
-	sql::PreparedStatement* updateJobDataQuery;
+	try {
+		sql::Driver* driver;
+		sql::Connection* con;
+		sql::PreparedStatement* updateJobDataQuery;
 
-	driver = get_driver_instance();
-	con = driver->connect(db_ip, db_login, db_password);
+		driver = get_driver_instance();
+		con = driver->connect(db_ip, db_login, db_password);
 
-	sql::Statement* useDB;
-	useDB = con->createStatement();
-	useDB->execute("USE firma_piece");
-	delete useDB;
+		sql::Statement* useDB;
+		useDB = con->createStatement();
+		useDB->execute("USE firma_piece");
+		delete useDB;
 
-	updateJobDataQuery = con->prepareStatement("SELECT id_zlecenia, status, data_zgloszenia, data_serwisu, data_zakonczenia, opis, komentarz FROM zlecenia WHERE id_zlecenia=? LIMIT 1");
-	updateJobDataQuery->setInt(1, jobId.toInt());
+		updateJobDataQuery = con->prepareStatement("SELECT id_zlecenia, status, data_zgloszenia, data_serwisu, data_zakonczenia, opis, komentarz FROM zlecenia WHERE id_zlecenia=? LIMIT 1");
+		updateJobDataQuery->setInt(1, jobId.toInt());
 
-	sql::ResultSet* result;
-	result = updateJobDataQuery->executeQuery();
+		sql::ResultSet* result;
+		result = updateJobDataQuery->executeQuery();
 
-	while (result->next()) {
-		break;
+		while (result->next()) {
+			break;
+		}
+
+		this->jobIdLabel->setText(QString::number(result->getInt(1)));
+		this->jobStatusLabel->setText(QString::fromUtf8(result->getString(2).asStdString()));
+		this->jobBeginDateLabel->setText(QString::fromUtf8(result->getString(3).asStdString()));
+		this->jobServiceDateLabel->setText(QString::fromUtf8(result->getString(4).asStdString()));
+		if (!QString::fromUtf8(result->getString(5).asStdString()).isEmpty()) {
+			this->jobEndLabel->setText(QString::fromUtf8(result->getString(5).asStdString()));
+		}
+		else {
+			this->jobEndLabel->setText("<brak>");
+		}
+		if (!QString::fromUtf8(result->getString(6).asStdString()).isEmpty()) {
+			this->jobDescriptionLabel->setText(QString::fromUtf8(result->getString(6).asStdString()));
+		}
+		else {
+			this->jobEndLabel->setText("<brak>");
+		}
+		if (!QString::fromUtf8(result->getString(7).asStdString()).isEmpty()) {
+			this->jobCommentLabel->setText(QString::fromUtf8(result->getString(7).asStdString()));
+		}
+		else {
+			this->jobEndLabel->setText("<brak>");
+		}
+
+
+		delete updateJobDataQuery;
+		delete con;
 	}
-
-	this->jobIdLabel->setText(QString::number(result->getInt(1)));
-	this->jobStatusLabel->setText(QString::fromUtf8(result->getString(2).asStdString()));
-	this->jobBeginDateLabel->setText(QString::fromUtf8(result->getString(3).asStdString()));
-	this->jobServiceDateLabel->setText(QString::fromUtf8(result->getString(4).asStdString()));
-	if (!QString::fromUtf8(result->getString(5).asStdString()).isEmpty()) {
-		this->jobEndLabel->setText(QString::fromUtf8(result->getString(5).asStdString()));
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas łączenia z bazą.");
 	}
-	else {
-		this->jobEndLabel->setText("<brak>");
-	}
-	if (!QString::fromUtf8(result->getString(6).asStdString()).isEmpty()) {
-		this->jobDescriptionLabel->setText(QString::fromUtf8(result->getString(6).asStdString()));
-	}
-	else {
-		this->jobEndLabel->setText("<brak>");
-	}
-	if (!QString::fromUtf8(result->getString(7).asStdString()).isEmpty()) {
-		this->jobCommentLabel->setText(QString::fromUtf8(result->getString(7).asStdString()));
-	}
-	else {
-		this->jobEndLabel->setText("<brak>");
-	}
-
-
-	delete updateJobDataQuery;
-	delete con;
 }
 
 
@@ -219,137 +244,122 @@ void jobDetailsDialog::on_changeStatusButton_clicked() {
 
 
 void jobDetailsDialog::on_workerChangeButton_clicked() {
-	chooseWorkerDialog chooseWorker(this);
-	if (chooseWorker.exec()) {
-		QString workerId = chooseWorker.workerTable->currentItem()->data(Qt::UserRole).toString();
+	try {
+		chooseWorkerDialog chooseWorker(this);
+		if (chooseWorker.exec()) {
+			QString workerId = chooseWorker.workerTable->currentItem()->data(Qt::UserRole).toString();
 
-		sql::Driver* driver;
-		sql::Connection* con;
-		sql::PreparedStatement* changeWorkerId;
+			sql::Driver* driver;
+			sql::Connection* con;
+			sql::PreparedStatement* changeWorkerId;
 
-		driver = get_driver_instance();
-		con = driver->connect(db_ip, db_login, db_password);
+			driver = get_driver_instance();
+			con = driver->connect(db_ip, db_login, db_password);
 
-		sql::Statement* useDB;
-		useDB = con->createStatement();
-		useDB->execute("USE firma_piece");
-		delete useDB;
+			sql::Statement* useDB;
+			useDB = con->createStatement();
+			useDB->execute("USE firma_piece");
+			delete useDB;
 
-		changeWorkerId = con->prepareStatement("UPDATE zlecenia SET id_pracownika=? WHERE zlecenia.id_zlecenia=?");
+			changeWorkerId = con->prepareStatement("UPDATE zlecenia SET id_pracownika=? WHERE zlecenia.id_zlecenia=?");
 
-		changeWorkerId->setInt(1, workerId.toInt());
-		changeWorkerId->setInt(2, jobId.toInt());
+			changeWorkerId->setInt(1, workerId.toInt());
+			changeWorkerId->setInt(2, jobId.toInt());
 
-		sql::ResultSet* result;
-		result = changeWorkerId->executeQuery();
+			sql::ResultSet* result;
+			result = changeWorkerId->executeQuery();
 
-		delete changeWorkerId;
-		delete con;
+			delete changeWorkerId;
+			delete con;
 
-		updateWorkerData();
+			updateWorkerData();
+		}
+	}
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas zmiany pracownika.");
 	}
 }
 
 void jobDetailsDialog::on_furnaceChangeButton_clicked() {
-	chooseFurnaceDialog chooseFurnace(this);
-	if (chooseFurnace.exec()) {
-		QString furnaceId = chooseFurnace.furnaceTable->currentItem()->data(Qt::UserRole).toString();
+	try {
+		chooseFurnaceDialog chooseFurnace(this);
+		if (chooseFurnace.exec()) {
+			QString furnaceId = chooseFurnace.furnaceTable->currentItem()->data(Qt::UserRole).toString();
 
-		sql::Driver* driver;
-		sql::Connection* con;
-		sql::PreparedStatement* changeFurnaceId;
+			sql::Driver* driver;
+			sql::Connection* con;
+			sql::PreparedStatement* changeFurnaceId;
 
-		driver = get_driver_instance();
-		con = driver->connect(db_ip, db_login, db_password);
+			driver = get_driver_instance();
+			con = driver->connect(db_ip, db_login, db_password);
 
-		sql::Statement* useDB;
-		useDB = con->createStatement();
-		useDB->execute("USE firma_piece");
-		delete useDB;
+			sql::Statement* useDB;
+			useDB = con->createStatement();
+			useDB->execute("USE firma_piece");
+			delete useDB;
 
-		changeFurnaceId = con->prepareStatement("UPDATE zlecenia SET id_pieca=? WHERE zlecenia.id_zlecenia=?");
+			changeFurnaceId = con->prepareStatement("UPDATE zlecenia SET id_pieca=? WHERE zlecenia.id_zlecenia=?");
 
-		changeFurnaceId->setInt(1, furnaceId.toInt());
-		changeFurnaceId->setInt(2, jobId.toInt());
+			changeFurnaceId->setInt(1, furnaceId.toInt());
+			changeFurnaceId->setInt(2, jobId.toInt());
 
-		sql::ResultSet* result;
-		result = changeFurnaceId->executeQuery();
+			sql::ResultSet* result;
+			result = changeFurnaceId->executeQuery();
 
-		delete changeFurnaceId;
-		delete con;
+			delete changeFurnaceId;
+			delete con;
 
-		updateFurnaceData();
+			updateFurnaceData();
+		}
+	}
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas zmiany pieca.");
 	}
 }
 
 void jobDetailsDialog::on_customerChangeButton_clicked() {
-	chooseCustomerDialog chooseCustomer(this);
-	if (chooseCustomer.exec()) {
-		QString customerId = chooseCustomer.customerTable->currentItem()->data(Qt::UserRole).toString();
+	try {
+		chooseCustomerDialog chooseCustomer(this);
+		if (chooseCustomer.exec()) {
+			QString customerId = chooseCustomer.customerTable->currentItem()->data(Qt::UserRole).toString();
 
-		sql::Driver* driver;
-		sql::Connection* con;
-		sql::PreparedStatement* changeCustomerId;
+			sql::Driver* driver;
+			sql::Connection* con;
+			sql::PreparedStatement* changeCustomerId;
 
-		driver = get_driver_instance();
-		con = driver->connect(db_ip, db_login, db_password);
+			driver = get_driver_instance();
+			con = driver->connect(db_ip, db_login, db_password);
 
-		sql::Statement* useDB;
-		useDB = con->createStatement();
-		useDB->execute("USE firma_piece");
-		delete useDB;
+			sql::Statement* useDB;
+			useDB = con->createStatement();
+			useDB->execute("USE firma_piece");
+			delete useDB;
 
-		changeCustomerId = con->prepareStatement("UPDATE zlecenia SET id_klienta=? WHERE zlecenia.id_zlecenia=?");
+			changeCustomerId = con->prepareStatement("UPDATE zlecenia SET id_klienta=? WHERE zlecenia.id_zlecenia=?");
 
-		changeCustomerId->setInt(1, customerId.toInt());
-		changeCustomerId->setInt(2, jobId.toInt());
+			changeCustomerId->setInt(1, customerId.toInt());
+			changeCustomerId->setInt(2, jobId.toInt());
 
-		sql::ResultSet* result;
-		result = changeCustomerId->executeQuery();
+			sql::ResultSet* result;
+			result = changeCustomerId->executeQuery();
 
-		delete changeCustomerId;
-		delete con;
+			delete changeCustomerId;
+			delete con;
 
-		updateCustomerData();
+			updateCustomerData();
+		}
+	}
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas zmiany klienta.");
 	}
 }
 
 void jobDetailsDialog::on_jobDataChangeButton_clicked() {
-	editJobDialog editJob(this);
-	sql::Driver* driver;
-	sql::Connection* con;
-	sql::PreparedStatement* getJobData;
-
-	driver = get_driver_instance();
-	con = driver->connect(db_ip, db_login, db_password);
-
-	sql::Statement* useDB;
-	useDB = con->createStatement();
-	useDB->execute("USE firma_piece");
-	delete useDB;
-
-	getJobData = con->prepareStatement("SELECT data_zgloszenia, data_serwisu, data_zakonczenia, opis, komentarz FROM zlecenia WHERE zlecenia.id_zlecenia=?");
-	getJobData->setInt(1, jobId.toInt());
-
-	sql::ResultSet* resultGet;
-	resultGet = getJobData->executeQuery();
-
-	while (resultGet->next()) {
-		break;
-	}
-	
-	editJob.beginDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(1).asStdString()), "yyyy-MM-dd"));
-	editJob.serviceDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(2).asStdString()), "yyyy-MM-dd"));
-	editJob.endDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(3).asStdString()), "yyyy-MM-dd"));
-	editJob.descriptionEdit->setText(QString::fromUtf8(resultGet->getString(4).asStdString()));
-	editJob.commentEdit->setText(QString::fromUtf8(resultGet->getString(5).asStdString()));
-
-	delete getJobData;
-	delete con;
-	if (editJob.exec()) {
+	try {
+		editJobDialog editJob(this);
 		sql::Driver* driver;
 		sql::Connection* con;
-		sql::PreparedStatement* editJobData;
+		sql::PreparedStatement* getJobData;
 
 		driver = get_driver_instance();
 		con = driver->connect(db_ip, db_login, db_password);
@@ -359,51 +369,90 @@ void jobDetailsDialog::on_jobDataChangeButton_clicked() {
 		useDB->execute("USE firma_piece");
 		delete useDB;
 
-		editJobData = con->prepareStatement("UPDATE zlecenia SET data_zgloszenia=?, data_serwisu=?, data_zakonczenia=?, opis=?, komentarz=? WHERE zlecenia.id_zlecenia=?");
+		getJobData = con->prepareStatement("SELECT data_zgloszenia, data_serwisu, data_zakonczenia, opis, komentarz FROM zlecenia WHERE zlecenia.id_zlecenia=?");
+		getJobData->setInt(1, jobId.toInt());
 
-		editJobData->setString(1, editJob.beginDateEdit->date().toString("yyyy-MM-dd").toStdString());
-		editJobData->setString(2, editJob.serviceDateEdit->date().toString("yyyy-MM-dd").toStdString());
-		editJobData->setString(3, editJob.endDateEdit->date().toString("yyyy-MM-dd").toStdString());
-		editJobData->setString(4, editJob.descriptionEdit->text().toStdString());
-		editJobData->setString(5, editJob.commentEdit->text().toStdString());
-		editJobData->setInt(6, jobId.toInt());
-		
+		sql::ResultSet* resultGet;
+		resultGet = getJobData->executeQuery();
 
-		sql::ResultSet* result;
-		result = editJobData->executeQuery();
+		while (resultGet->next()) {
+			break;
+		}
 
-		delete editJobData;
+		editJob.beginDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(1).asStdString()), "yyyy-MM-dd"));
+		editJob.serviceDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(2).asStdString()), "yyyy-MM-dd"));
+		editJob.endDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(3).asStdString()), "yyyy-MM-dd"));
+		editJob.descriptionEdit->setText(QString::fromUtf8(resultGet->getString(4).asStdString()));
+		editJob.commentEdit->setText(QString::fromUtf8(resultGet->getString(5).asStdString()));
+
+		delete getJobData;
 		delete con;
+		if (editJob.exec()) {
+			sql::Driver* driver;
+			sql::Connection* con;
+			sql::PreparedStatement* editJobData;
 
-		updateJobData();
+			driver = get_driver_instance();
+			con = driver->connect(db_ip, db_login, db_password);
+
+			sql::Statement* useDB;
+			useDB = con->createStatement();
+			useDB->execute("USE firma_piece");
+			delete useDB;
+
+			editJobData = con->prepareStatement("UPDATE zlecenia SET data_zgloszenia=?, data_serwisu=?, data_zakonczenia=?, opis=?, komentarz=? WHERE zlecenia.id_zlecenia=?");
+
+			editJobData->setString(1, editJob.beginDateEdit->date().toString("yyyy-MM-dd").toStdString());
+			editJobData->setString(2, editJob.serviceDateEdit->date().toString("yyyy-MM-dd").toStdString());
+			editJobData->setString(3, editJob.endDateEdit->date().toString("yyyy-MM-dd").toStdString());
+			editJobData->setString(4, editJob.descriptionEdit->text().toStdString());
+			editJobData->setString(5, editJob.commentEdit->text().toStdString());
+			editJobData->setInt(6, jobId.toInt());
+
+
+			sql::ResultSet* result;
+			result = editJobData->executeQuery();
+
+			delete editJobData;
+			delete con;
+
+			updateJobData();
+		}
+	}
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas zmiany danych zlecenia.");
 	}
 }
 
 
 void jobDetailsDialog::on_deleteButton_clicked() {
-	yesNoDialog confirmDialog(this);
-	confirmDialog.setMessage("Czy na pewno usunąć zlecenie?");
-	if (confirmDialog.exec()) {
-		sql::Driver* driver;
-		sql::Connection* con;
-		sql::PreparedStatement* deleteJob;
+	try {
+		yesNoDialog confirmDialog(this);
+		confirmDialog.setMessage("Czy na pewno usunąć zlecenie?");
+		if (confirmDialog.exec()) {
+			sql::Driver* driver;
+			sql::Connection* con;
+			sql::PreparedStatement* deleteJob;
 
-		driver = get_driver_instance();
-		con = driver->connect(db_ip, db_login, db_password);
+			driver = get_driver_instance();
+			con = driver->connect(db_ip, db_login, db_password);
 
-		sql::Statement* useDB;
-		useDB = con->createStatement();
-		useDB->execute("USE firma_piece");
-		delete useDB;
+			sql::Statement* useDB;
+			useDB = con->createStatement();
+			useDB->execute("USE firma_piece");
+			delete useDB;
 
-		deleteJob = con->prepareStatement("DELETE FROM zlecenia WHERE id_zlecenia=?");
-		deleteJob->setInt(1, jobId.toInt());
+			deleteJob = con->prepareStatement("UPDATE zlecenia SET usuniety=1 WHERE id_zlecenia=?");
+			deleteJob->setInt(1, jobId.toInt());
 
-		deleteJob->execute();
+			deleteJob->execute();
 
-		delete deleteJob;
-		delete con;
-		this->close();
+			delete deleteJob;
+			delete con;
+			this->close();
+		}
 	}
-
+	catch (sql::SQLException) {
+		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas usuwania zlecenia.");
+	}
 }
