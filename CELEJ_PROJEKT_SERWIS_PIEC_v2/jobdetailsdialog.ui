@@ -19,7 +19,7 @@
      <x>1</x>
      <y>1</y>
      <width>661</width>
-     <height>616</height>
+     <height>646</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_3">
@@ -557,7 +557,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_13">
         <item>
-         <layout class="QFormLayout" name="formLayout">
+         <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0">
            <widget class="QLabel" name="label_11">
             <property name="text">
@@ -579,8 +579,8 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="jobServiceDateLabel">
+          <item row="2" column="1">
+           <widget class="QLabel" name="jobEndLabel">
             <property name="text">
              <string>&lt;brak&gt;</string>
             </property>
@@ -593,8 +593,8 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="jobEndLabel">
+          <item row="1" column="1">
+           <widget class="QLabel" name="jobServiceDateLabel">
             <property name="text">
              <string>&lt;brak&gt;</string>
             </property>

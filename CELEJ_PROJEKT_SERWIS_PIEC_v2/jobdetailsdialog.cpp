@@ -201,7 +201,12 @@ void jobDetailsDialog::updateJobData() {
 		this->jobIdLabel->setText(QString::number(result->getInt(1)));
 		this->jobStatusLabel->setText(QString::fromUtf8(result->getString(2).asStdString()));
 		this->jobBeginDateLabel->setText(QString::fromUtf8(result->getString(3).asStdString()));
-		this->jobServiceDateLabel->setText(QString::fromUtf8(result->getString(4).asStdString()));
+		if (!QString::fromUtf8(result->getString(4).asStdString()).isEmpty()) {
+			this->jobServiceDateLabel->setText(QString::fromUtf8(result->getString(4).asStdString()));
+		}
+		else {
+			this->jobServiceDateLabel->setText("<brak");
+		}
 		if (!QString::fromUtf8(result->getString(5).asStdString()).isEmpty()) {
 			this->jobEndLabel->setText(QString::fromUtf8(result->getString(5).asStdString()));
 		}
@@ -380,8 +385,22 @@ void jobDetailsDialog::on_jobDataChangeButton_clicked() {
 		}
 
 		editJob.beginDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(1).asStdString()), "yyyy-MM-dd"));
-		editJob.serviceDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(2).asStdString()), "yyyy-MM-dd"));
-		editJob.endDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(3).asStdString()), "yyyy-MM-dd"));
+		if (!resultGet->getString(2).asStdString().empty()) {
+			editJob.serviceDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(2).asStdString()), "yyyy-MM-dd"));
+			editJob.serviceCheckBox->setCheckState(Qt::Unchecked);
+		}
+		else {
+			editJob.serviceDateEdit->setDate(QDate::fromString("0000-00-00", "yyyy-MM-dd"));
+			editJob.serviceCheckBox->setCheckState(Qt::Checked);
+		}
+		if (!resultGet->getString(3).asStdString().empty()) {
+			editJob.endDateEdit->setDate(QDate::fromString(QString::fromUtf8(resultGet->getString(3).asStdString()), "yyyy-MM-dd"));
+			editJob.endCheckBox->setCheckState(Qt::Unchecked);
+		}
+		else {
+			editJob.endDateEdit->setDate(QDate::fromString("0000-00-00", "yyyy-MM-dd"));
+			editJob.endCheckBox->setCheckState(Qt::Checked);
+		}
 		editJob.descriptionEdit->setText(QString::fromUtf8(resultGet->getString(4).asStdString()));
 		editJob.commentEdit->setText(QString::fromUtf8(resultGet->getString(5).asStdString()));
 
@@ -403,8 +422,18 @@ void jobDetailsDialog::on_jobDataChangeButton_clicked() {
 			editJobData = con->prepareStatement("UPDATE zlecenia SET data_zgloszenia=?, data_serwisu=?, data_zakonczenia=?, opis=?, komentarz=? WHERE zlecenia.id_zlecenia=?");
 
 			editJobData->setString(1, editJob.beginDateEdit->date().toString("yyyy-MM-dd").toStdString());
-			editJobData->setString(2, editJob.serviceDateEdit->date().toString("yyyy-MM-dd").toStdString());
-			editJobData->setString(3, editJob.endDateEdit->date().toString("yyyy-MM-dd").toStdString());
+			if (editJob.serviceCheckBox->checkState() == Qt::Unchecked) {
+				editJobData->setString(2, editJob.serviceDateEdit->date().toString("yyyy-MM-dd").toStdString());
+			}
+			else {
+				editJobData->setNull(2, 0);
+			}
+			if (editJob.endCheckBox->checkState() == Qt::Unchecked) {
+				editJobData->setString(3, editJob.endDateEdit->date().toString("yyyy-MM-dd").toStdString());
+			}
+			else {
+				editJobData->setNull(3, 0);
+			}
 			editJobData->setString(4, editJob.descriptionEdit->text().toStdString());
 			editJobData->setString(5, editJob.commentEdit->text().toStdString());
 			editJobData->setInt(6, jobId.toInt());

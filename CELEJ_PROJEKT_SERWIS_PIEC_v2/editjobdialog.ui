@@ -13,12 +13,12 @@
   <property name="windowTitle">
    <string>editJobDialog</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>11</x>
      <y>11</y>
-     <width>561</width>
+     <width>366</width>
      <height>304</height>
     </rect>
    </property>
@@ -26,7 +26,14 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <layout class="QFormLayout" name="formLayout">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Data zakończenia:</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
@@ -34,8 +41,11 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QDateEdit" name="beginDateEdit"/>
+        <item row="2" column="1">
+         <widget class="QDateEdit" name="endDateEdit"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDateEdit" name="serviceDateEdit"/>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
@@ -44,18 +54,22 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
-         <widget class="QDateEdit" name="serviceDateEdit"/>
+        <item row="0" column="1">
+         <widget class="QDateEdit" name="beginDateEdit"/>
         </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_3">
+        <item row="1" column="2">
+         <widget class="QCheckBox" name="serviceCheckBox">
           <property name="text">
-           <string>Data zakończenia:</string>
+           <string>Brak</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QDateEdit" name="endDateEdit"/>
+        <item row="2" column="2">
+         <widget class="QCheckBox" name="endCheckBox">
+          <property name="text">
+           <string>Brak</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
