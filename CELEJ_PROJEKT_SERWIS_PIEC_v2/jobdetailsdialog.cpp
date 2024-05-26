@@ -159,7 +159,7 @@ void jobDetailsDialog::updateJobStatus() {
 		}
 		else {
 			this->jobStatusLabel->setText("Zamknięte");
-			jobStatusQuery = con->prepareStatement("UPDATE zlecenia SET status='Zamkniete' WHERE zlecenia.id_zlecenia=?");
+			jobStatusQuery = con->prepareStatement("UPDATE zlecenia SET status='Zamknięte' WHERE zlecenia.id_zlecenia=?");
 		}
 
 		jobStatusQuery->setInt(1, jobId.toInt());
