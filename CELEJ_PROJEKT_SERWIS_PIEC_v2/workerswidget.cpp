@@ -14,6 +14,7 @@ workersWidget::workersWidget(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+    ui.workersList->horizontalHeader()->setStretchLastSection(true);
 	QMetaObject::invokeMethod(ui.refreshButton, "clicked");
 }
 

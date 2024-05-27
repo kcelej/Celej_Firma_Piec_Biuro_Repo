@@ -17,6 +17,7 @@ furnacesWidget::furnacesWidget(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+    ui.furnacesList->horizontalHeader()->setStretchLastSection(true);
     QMetaObject::invokeMethod(ui.refreshButton, "clicked");
 }
 

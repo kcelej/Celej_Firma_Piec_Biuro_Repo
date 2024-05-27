@@ -16,6 +16,7 @@ jobsWidget::jobsWidget(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+    ui.jobsList->horizontalHeader()->setStretchLastSection(true);
     QMetaObject::invokeMethod(ui.refreshButton, "clicked");
 }
 

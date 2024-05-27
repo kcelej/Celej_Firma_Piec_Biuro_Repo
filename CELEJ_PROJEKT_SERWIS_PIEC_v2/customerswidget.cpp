@@ -14,6 +14,7 @@ customersWidget::customersWidget(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+    ui.customersList->horizontalHeader()->setStretchLastSection(true);
     QMetaObject::invokeMethod(ui.refreshButton, "clicked");
 }
 

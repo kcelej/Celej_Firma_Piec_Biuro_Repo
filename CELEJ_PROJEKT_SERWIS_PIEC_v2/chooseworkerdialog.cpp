@@ -13,6 +13,7 @@ chooseWorkerDialog::chooseWorkerDialog(QWidget* parent)
 	: QDialog(parent)
 {
 	setupUi(this);
+	this->workerTable->horizontalHeader()->setStretchLastSection(true);
 	QMetaObject::invokeMethod(this->refreshButton, "clicked");
 }
 

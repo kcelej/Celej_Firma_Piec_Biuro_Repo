@@ -13,6 +13,7 @@ chooseFurnaceDialog::chooseFurnaceDialog(QWidget *parent)
 	: QDialog(parent)
 {
 	setupUi(this);
+	this->furnaceTable->horizontalHeader()->setStretchLastSection(true);
 	QMetaObject::invokeMethod(this->refreshButton, "clicked");
 }
 

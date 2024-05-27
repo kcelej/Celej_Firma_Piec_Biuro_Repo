@@ -2,11 +2,24 @@
 	
 }
 
+QMainWindow {
+	background-color:#cce6ff;
+}
+
+QWidget{
+	background-color:#cce6ff;
+}
+
+QDialog{
+	background-color:#cce6ff;
+}
+
 QLineEdit {
-	background-color:#e6e6e6;
+	background-color:#FFFFFF;
 }
 
 QPushButton {
+	font:bold;
 	background-color:#3399ff;
 	border-width: 2px;
     border-radius: 10px;
@@ -15,10 +28,85 @@ QPushButton {
     padding: 6px;
 }
 
-QMainWindow {
+QPushButton::pressed{
+	background-color:#99ccff;
+}
+
+QTableWidget {
+	background-color:#FFFFFF;
+	selection-background-color:#66ccff;
+	selection-color:black;
+}
+
+QHeaderView::section{
+	background-color:#66ccff;
+	font:bold;
+}
+
+QHeaderView{
+	background-color:#66ccff;
+}
+
+QTableCornerButton::section {
+	background:#66ccff;
+}
+
+QFrame#mainWindowButtonsFrame{
 	background-color:#004d99;
 }
 
-QTable {
+QFrame#jobStatusFrame, QFrame#jobDetailsFrame, QFrame#jobCustomerFrame, QFrame#jobWorkerFrame, QFrame#jobFurnacesFrame {
+	border: 2px solid blue;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+}
+
+QComboBox{
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 5em;
+    padding: 6px;
+	background-color: #FFFFFF;
+}
+
+QComboBox::drop-down{
+	border-width: 2px;
+}
+
+QLabel#sortLabel {
+	font:bold;
+	background-color:#3399ff;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 5em;
+    padding: 6px;
+}
+
+QDateEdit {
+	font:bold;
 	background-color:#FFFFFF;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 5em;
+    padding: 6px;
+}
+
+QDateEdit::up-button, QDateEdit::down-button, QDateEdit::up-arrow, QDateEdit::down-arrow{
+	all:initial;
+}
+
+QLabel#widgetLabel {
+	font-size:20px;
+	font:bold;
+	background-color:#3399ff;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 5em;
+    padding: 6px;
+
 }
