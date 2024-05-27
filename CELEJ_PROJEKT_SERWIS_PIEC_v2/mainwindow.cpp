@@ -85,20 +85,37 @@ mainWindow::mainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
+    try {
+        userSingleton& user = userSingleton::instance();
+        sql::Driver* driver;
+        sql::Connection* con;
 
-    userSingleton &user = userSingleton::instance();
+        driver = get_driver_instance();
+        con = driver->connect(db_ip, db_login, db_password);
 
-    QWidget* jobs = new jobsWidget();   // create the jobs screen
-    QWidget* customers = new customersWidget();   // create the customers screen
-    QWidget* workers = new workersWidget();   // create the workers screen
-    QWidget* furnaces = new furnacesWidget();   // create the furnaces screen
+        sql::Statement* useDB;
+        useDB = con->createStatement();
+        useDB->execute("USE firma_piece");
+        delete useDB;
+        delete con;
 
-    ui.stackedWidget->addWidget(jobs);
-    ui.stackedWidget->addWidget(customers);
-    ui.stackedWidget->addWidget(workers);
-    ui.stackedWidget->addWidget(furnaces);
+        QWidget* jobs = new jobsWidget();   // create the jobs screen
+        QWidget* customers = new customersWidget();   // create the customers screen
+        QWidget* workers = new workersWidget();   // create the workers screen
+        QWidget* furnaces = new furnacesWidget();   // create the furnaces screen
 
-    login();    // display the login dialog
+        ui.stackedWidget->addWidget(jobs);
+        ui.stackedWidget->addWidget(customers);
+        ui.stackedWidget->addWidget(workers);
+        ui.stackedWidget->addWidget(furnaces);
+
+        login();    // display the login dialog
+    }
+    catch(sql::SQLException){
+        QMessageBox::warning(this, "Uwaga!", "Błąd podczas łączenia z bazą.\nDziałanie programu zostanie zakończone.");
+        exit(0);
+        
+    }
 }
 
 mainWindow::~mainWindow()
