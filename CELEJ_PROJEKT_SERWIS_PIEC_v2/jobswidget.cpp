@@ -92,6 +92,8 @@ void jobsWidget::on_refreshButton_clicked() {
 void jobsWidget::on_addButton_clicked() {
     try {
         addJobDialog addJob(this);
+        addJob.setWindowTitle("Dodaj zlecenie");
+
         if (addJob.exec()) {
             if (addJob.getCustomerId().isEmpty() || addJob.getFurnaceId().isEmpty() || addJob.getWorkerId().isEmpty()) {
                 throw exception();
@@ -150,6 +152,8 @@ void jobsWidget::on_detailsButton_clicked() {
         QTableWidgetItem* currentItem = ui.jobsList->currentItem();
         if (currentItem) {
             jobDetailsDialog jobDetails(this);
+            jobDetails.setWindowTitle("Szczegóły zlecenia");
+
             jobDetails.setJobId(currentItem->data(Qt::UserRole).toString());
             jobDetails.updateAllData();
             if (jobDetails.exec()) {
@@ -165,5 +169,7 @@ void jobsWidget::on_detailsButton_clicked() {
 
 void jobsWidget::on_reportButton_clicked() {
     reportDialog report(this);
+    report.setWindowTitle("Generuj raport");
+
     report.exec();
 }

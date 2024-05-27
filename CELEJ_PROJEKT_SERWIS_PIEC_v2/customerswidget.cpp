@@ -104,6 +104,7 @@ void customersWidget::on_refreshButton_clicked() {
 void customersWidget::on_addButton_clicked() {
     try {
         addCustomerDialog addCustomer(this);
+        addCustomer.setWindowTitle("Dodaj klienta");
         if (addCustomer.exec()) {
             if (!addCustomer.nameEdit->text().isEmpty() && !addCustomer.surnameEdit->text().isEmpty() && !addCustomer.phoneEdit->text().isEmpty() && !addCustomer.addressEdit->text().isEmpty() && addCustomer.phoneEdit->text().length() == 9) {
                 sql::Driver* driver;
@@ -146,7 +147,7 @@ void customersWidget::on_addButton_clicked() {
         }
     }
     catch (sql::SQLException) {
-        QMessageBox::information(this, "Błąd", "Wystąpił problem podczas dodawania pracownika.");
+        QMessageBox::information(this, "Błąd", "Wystąpił problem podczas dodawania klienta.");
     }
 }
 
@@ -229,6 +230,7 @@ void customersWidget::on_editButton_clicked() {
 
         // get customer's data into the line edit fields
         addCustomerDialog editCustomer(this);
+        editCustomer.setWindowTitle("Edytuj klienta");
         // get customer name
         editCustomer.nameEdit->setText(QString::fromUtf8(customerDataResults->getString(1).asStdString()));
 
@@ -274,6 +276,6 @@ void customersWidget::on_editButton_clicked() {
         QMessageBox::information(this, "Błąd", "Wystąpił problem podczas edytowania klienta.");
     }
     catch (...) {
-        QMessageBox::information(this, "Błąd", "Nie wybrano pracownika!");
+        QMessageBox::information(this, "Błąd", "Nie wybrano klienta!");
     }
 }

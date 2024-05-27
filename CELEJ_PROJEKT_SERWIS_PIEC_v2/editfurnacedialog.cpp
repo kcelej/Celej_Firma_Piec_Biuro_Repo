@@ -25,6 +25,7 @@ editFurnaceDialog::~editFurnaceDialog()
 
 void editFurnaceDialog::browse() {
     QFileDialog addFile(this);
+    addFile.setWindowTitle("Dodaj instrukcję");
     QString filePath = addFile.getOpenFileName(this, tr("Instrukcja"), QDir::currentPath(), tr("Pliki PDF (*.pdf)"));   // browse PDF files on the device
 
     if (!filePath.isEmpty()) {

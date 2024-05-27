@@ -21,6 +21,7 @@ addJobDialog::~addJobDialog()
 void addJobDialog::on_chooseWorkerButton_clicked() {
 	try {
 		chooseWorkerDialog chooseWorker(this);
+		chooseWorker.setWindowTitle("Wybierz pracownika");
 		if (chooseWorker.exec()) {
 			if (!chooseWorker.workerTable->currentItem()) {
 				throw exception();
@@ -40,6 +41,7 @@ void addJobDialog::on_chooseWorkerButton_clicked() {
 void addJobDialog::on_chooseFurnaceButton_clicked() {
 	try {
 		chooseFurnaceDialog chooseFurnace(this);
+		chooseFurnace.setWindowTitle("Wybierz piec");
 		if (chooseFurnace.exec()) {
 			if (!chooseFurnace.furnaceTable->currentItem()) {
 				throw exception();
@@ -59,6 +61,7 @@ void addJobDialog::on_chooseFurnaceButton_clicked() {
 void addJobDialog::on_chooseCustomerButton_clicked() {
 	try {
 		chooseCustomerDialog chooseCustomer(this);
+		chooseCustomer.setWindowTitle("Wybierz klienta");
 		if (chooseCustomer.exec()) {
 			if (!chooseCustomer.customerTable->currentItem()) {
 				throw exception();

@@ -118,6 +118,7 @@ void workersWidget::on_addButton_clicked() {
             delete useDB;
 
             addWorkerDialog addWorker(this);
+            addWorker.setWindowTitle("Dodaj pracownika");
 
             sql::Statement* getPositions;
             getPositions = con->createStatement();
@@ -284,6 +285,7 @@ void workersWidget::on_editButton_clicked() {
 
             // get worker's data into the line edit fields
             addWorkerDialog editWorker(this);
+            editWorker.setWindowTitle("Edytuj dane pracownika");
 
             // get worker's name
             editWorker.nameEdit->setText(QString::fromUtf8(workerDataResults->getString(1).asStdString()));

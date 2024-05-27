@@ -25,6 +25,7 @@ void mainWindow::login() {
     do {    // get login and password and search the database for a user with the same credentials
         try {
             loginScreen dialog(this);
+            dialog.setWindowTitle("Logowanie");
 
             if (dialog.exec()) {
                 string login = (dialog.loginEdit->text()).toStdString();
@@ -86,13 +87,13 @@ void mainWindow::login() {
 mainWindow::mainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    QFile qssFile("stylesheet.qss");
-    qssFile.open(QFile::ReadOnly);
-    QString stylesheet = QLatin1String(qssFile.readAll());
-    setStyleSheet(stylesheet);
-
-    ui.setupUi(this);
     try {
+        QFile qssFile("stylesheet.qss");
+        qssFile.open(QFile::ReadOnly);
+        QString stylesheet = QLatin1String(qssFile.readAll());
+        setStyleSheet(stylesheet);
+
+        ui.setupUi(this);
 
         QPixmap logo("logo.png");
         ui.logoLabel->setScaledContents(true);
@@ -126,6 +127,10 @@ mainWindow::mainWindow(QWidget *parent)
         QMessageBox::warning(this, "Uwaga!", "Błąd podczas łączenia z bazą.\nDziałanie programu zostanie zakończone.");
         exit(0);
         
+    }
+    catch (...) {
+        QMessageBox::warning(this, "Uwaga!", "Błąd uruchamiania apliacji.\nDziałanie programu zostanie zakończone.");
+        exit(0);
     }
 }
 

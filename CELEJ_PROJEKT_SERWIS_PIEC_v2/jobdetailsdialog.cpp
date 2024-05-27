@@ -249,6 +249,8 @@ void jobDetailsDialog::on_changeStatusButton_clicked() {
 void jobDetailsDialog::on_workerChangeButton_clicked() {
 	try {
 		chooseWorkerDialog chooseWorker(this);
+		chooseWorker.setWindowTitle("Wybierz pracownika");
+
 		if (chooseWorker.exec()) {
 			if (!chooseWorker.workerTable->currentItem()) {
 				throw exception();
@@ -292,6 +294,8 @@ void jobDetailsDialog::on_workerChangeButton_clicked() {
 void jobDetailsDialog::on_furnaceChangeButton_clicked() {
 	try {
 		chooseFurnaceDialog chooseFurnace(this);
+		chooseFurnace.setWindowTitle("Wybierz piec");
+
 		if (chooseFurnace.exec()) {
 			if (!chooseFurnace.furnaceTable->currentItem()) {
 				throw exception();
@@ -335,6 +339,8 @@ void jobDetailsDialog::on_furnaceChangeButton_clicked() {
 void jobDetailsDialog::on_customerChangeButton_clicked() {
 	try {
 		chooseCustomerDialog chooseCustomer(this);
+		chooseCustomer.setWindowTitle("Wybierz klienta");
+
 		if (chooseCustomer.exec()) {
 			if (!chooseCustomer.customerTable->currentItem()) {
 				throw exception();
@@ -378,6 +384,8 @@ void jobDetailsDialog::on_customerChangeButton_clicked() {
 void jobDetailsDialog::on_jobDataChangeButton_clicked() {
 	try {
 		editJobDialog editJob(this);
+		editJob.setWindowTitle("Edytuj zlecenie");
+
 		sql::Driver* driver;
 		sql::Connection* con;
 		sql::PreparedStatement* getJobData;

@@ -158,6 +158,7 @@ void furnacesWidget::on_addButton_clicked() {
     else {
         try {
             addFurnaceDialog addFurnace(this);
+            addFurnace.setWindowTitle("Dodaj piec");
 
             if (addFurnace.exec()) {
                 sql::Driver* driver;
@@ -279,6 +280,7 @@ void furnacesWidget::on_editButton_clicked() {
                 throw exception();
             }
             editFurnaceDialog editFurnace(this);
+            editFurnace.setWindowTitle("Edytuj piec");
             editFurnace.setFurnaceId(ui.furnacesList->currentItem()->data(Qt::UserRole).toInt());
 
             sql::Driver* driver;
