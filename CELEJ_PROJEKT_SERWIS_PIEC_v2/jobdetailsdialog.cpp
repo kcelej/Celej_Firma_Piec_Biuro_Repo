@@ -8,12 +8,10 @@
 
 #include "user.h"
 #include "dbData.h"
-#include "custombasicdialog.h"
 #include "chooseworkerdialog.h"
 #include "choosefurnacedialog.h"
 #include "choosecustomerdialog.h"
 #include "editjobdialog.h"
-#include "yesnodialog.h"
 
 jobDetailsDialog::jobDetailsDialog(QWidget *parent)
 	: QDialog(parent)
@@ -474,9 +472,9 @@ void jobDetailsDialog::on_jobDataChangeButton_clicked() {
 
 void jobDetailsDialog::on_deleteButton_clicked() {
 	try {
-		yesNoDialog confirmDialog(this);
-		confirmDialog.setMessage("Czy na pewno usunąć zlecenie?");
-		if (confirmDialog.exec()) {
+		QMessageBox::StandardButton reply;
+		reply = QMessageBox::question(this, "Uwaga!", "Czy na pewno usunąć zlecenie?", QMessageBox::Yes | QMessageBox::No);
+		if (reply == QMessageBox::Yes) {
 			sql::Driver* driver;
 			sql::Connection* con;
 			sql::PreparedStatement* deleteJob;

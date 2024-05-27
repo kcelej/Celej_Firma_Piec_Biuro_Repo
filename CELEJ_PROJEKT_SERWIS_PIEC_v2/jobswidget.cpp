@@ -8,7 +8,6 @@
 
 #include "user.h"
 #include "dbData.h"
-#include "custombasicdialog.h"
 #include "addjobdialog.h"
 #include "reportdialog.h"
 #include "jobdetailsdialog.h"
@@ -48,10 +47,10 @@ void jobsWidget::on_refreshButton_clicked() {
 
         // use the jobs query based on selected sorting method
         if (ui.sortBox->currentIndex() == 1) {    //od najstarszych
-            queryResult = jobsQuery->executeQuery("SELECT id_zlecenia, status, data_zgloszenia, klienci.adres FROM zlecenia INNER JOIN klienci ON zlecenia.id_klienta=klienci.id_klienta ORDER BY data_zgloszenia ASC");
+            queryResult = jobsQuery->executeQuery("SELECT id_zlecenia, status, data_zgloszenia, klienci.adres FROM zlecenia INNER JOIN klienci ON zlecenia.id_klienta=klienci.id_klienta WHERE zlecenia.usuniety=0 ORDER BY data_zgloszenia ASC");
         }
         else { //od najnowszych
-            queryResult = jobsQuery->executeQuery("SELECT id_zlecenia, status, data_zgloszenia, klienci.adres FROM zlecenia INNER JOIN klienci ON zlecenia.id_klienta=klienci.id_klienta ORDER BY data_zgloszenia DESC");
+            queryResult = jobsQuery->executeQuery("SELECT id_zlecenia, status, data_zgloszenia, klienci.adres FROM zlecenia INNER JOIN klienci ON zlecenia.id_klienta=klienci.id_klienta WHERE zlecenia.usuniety=0 ORDER BY data_zgloszenia DESC");
         }
         while (queryResult->next()) {
             int jobId = queryResult->getInt(1);

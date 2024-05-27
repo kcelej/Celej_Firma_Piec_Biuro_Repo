@@ -118,7 +118,6 @@
     <ClCompile Include="choosecustomerdialog.cpp" />
     <ClCompile Include="choosefurnacedialog.cpp" />
     <ClCompile Include="chooseworkerdialog.cpp" />
-    <ClCompile Include="custombasicdialog.cpp" />
     <ClCompile Include="customerswidget.cpp" />
     <ClCompile Include="editfurnacedialog.cpp" />
     <ClCompile Include="editjobdialog.cpp" />
@@ -128,10 +127,7 @@
     <ClCompile Include="reportdialog.cpp" />
     <ClCompile Include="user.cpp" />
     <ClCompile Include="workerswidget.cpp" />
-    <ClCompile Include="yesnodialog.cpp" />
     <QtMoc Include="workerswidget.h" />
-    <QtMoc Include="yesnodialog.h" />
-    <QtMoc Include="custombasicdialog.h" />
     <QtMoc Include="addjobdialog.h" />
     <QtMoc Include="chooseworkerdialog.h" />
     <QtMoc Include="choosefurnacedialog.h" />
@@ -156,7 +152,6 @@
     <QtUic Include="choosecustomerdialog.ui" />
     <QtUic Include="choosefurnacedialog.ui" />
     <QtUic Include="chooseworkerdialog.ui" />
-    <QtUic Include="custombasicdialog.ui" />
     <QtUic Include="customerswidget.ui" />
     <QtUic Include="editfurnacedialog.ui" />
     <QtUic Include="editjobdialog.ui" />
@@ -172,7 +167,6 @@
     <None Include="CELEJ_PROJEKT_SERWIS_PIEC_v2.ico" />
     <QtUic Include="reportdialog.ui" />
     <QtUic Include="workerswidget.ui" />
-    <QtUic Include="yesnodialog.ui" />
     <ResourceCompile Include="CELEJ_PROJEKT_SERWIS_PIEC_v2.rc" />
     <QtMoc Include="loginscreen.h" />
     <ClInclude Include="stdafx.h" />

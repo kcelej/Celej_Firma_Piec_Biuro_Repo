@@ -19,7 +19,6 @@
 
 #include "user.h"
 #include "dbData.h"
-#include "custombasicdialog.h"
 
 reportDialog::reportDialog(QWidget *parent)
 	: QDialog(parent)
@@ -145,9 +144,6 @@ void reportDialog::on_generateButton_clicked() {
                 delete jobEndData;
             }
         }
-        //#############################################################################################
-
-
 
         series->append(startedJobs);
         series->append(endedJobs);
@@ -168,6 +164,8 @@ void reportDialog::on_generateButton_clicked() {
         QValueAxis* axisY = new QValueAxis();
         maxJobs++;  // increase the highest Y axis value for readability
         axisY->setRange(0, maxJobs);
+        axisY->applyNiceNumbers();
+        axisY->setTitleText("Liczba zleceń");
         chart->addAxis(axisY, Qt::AlignLeft);
         series->attachAxis(axisY);
 

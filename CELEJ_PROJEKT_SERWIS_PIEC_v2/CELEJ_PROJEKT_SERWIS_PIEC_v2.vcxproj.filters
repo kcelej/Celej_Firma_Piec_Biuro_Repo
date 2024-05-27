@@ -61,9 +61,6 @@
     <ClCompile Include="jobswidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="custombasicdialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="addjobdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -83,9 +80,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="editjobdialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="yesnodialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="customerswidget.cpp">
@@ -117,9 +111,6 @@
     <QtMoc Include="jobswidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="custombasicdialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="addjobdialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -136,9 +127,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="editjobdialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="yesnodialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="customerswidget.h">
@@ -173,9 +161,6 @@
     <QtUic Include="jobswidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="custombasicdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="addjobdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -195,9 +180,6 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="editjobdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="yesnodialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="customerswidget.ui">

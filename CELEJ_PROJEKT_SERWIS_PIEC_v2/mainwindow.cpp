@@ -14,7 +14,6 @@
 #include "customerswidget.h"
 #include "workerswidget.h"
 #include "furnaceswidget.h"
-#include "custombasicdialog.h"
 #include <fstream>
 
 void mainWindow::login() {

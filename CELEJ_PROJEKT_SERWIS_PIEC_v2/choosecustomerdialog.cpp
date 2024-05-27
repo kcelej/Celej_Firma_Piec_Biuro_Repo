@@ -8,7 +8,6 @@
 
 #include "user.h"
 #include "dbData.h"
-#include "custombasicdialog.h"
 
 chooseCustomerDialog::chooseCustomerDialog(QWidget *parent)
 	: QDialog(parent)

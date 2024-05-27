@@ -8,7 +8,6 @@
 
 #include "user.h"
 #include "dbData.h"
-#include "custombasicdialog.h"
 
 chooseFurnaceDialog::chooseFurnaceDialog(QWidget *parent)
 	: QDialog(parent)

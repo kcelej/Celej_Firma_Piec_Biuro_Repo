@@ -8,9 +8,7 @@
 
 #include "user.h"
 #include "dbData.h"
-#include "custombasicdialog.h"
 #include "addworkerdialog.h"
-#include "yesnodialog.h"
 
 workersWidget::workersWidget(QWidget *parent)
 	: QWidget(parent)
@@ -137,9 +135,7 @@ void workersWidget::on_addButton_clicked() {
                 if (!addWorker.nameEdit->text().isEmpty() && !addWorker.surnameEdit->text().isEmpty() && !addWorker.phoneEdit->text().isEmpty() && !addWorker.passwordEdit->text().isEmpty() && !addWorker.loginEdit->text().isEmpty()) {
                     if (addWorker.name2CheckBox->checkState() == Qt::Unchecked) {
                         if (addWorker.name2Edit->text().isEmpty()) {
-                            customBasicDialog error(this);
-                            error.setMessage("Podano nieprawidłowe dane.");
-                            error.exec();
+                            QMessageBox::information(this, "Błąd", "Podano nieprawidłowe dane.");
                         }
                         else {
                             addWorkerQuery = con->prepareStatement("INSERT INTO pracownicy(imie, imie2, nazwisko, nr_tel, stanowisko, login, haslo, usuniety) VALUES (?, ?, ?, ?, ?, ?, ?, 0)");

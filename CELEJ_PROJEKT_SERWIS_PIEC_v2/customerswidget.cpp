@@ -9,8 +9,6 @@
 #include "user.h"
 #include "dbData.h"
 #include "addcustomerdialog.h"
-#include "custombasicdialog.h"
-#include "yesnodialog.h"
 
 customersWidget::customersWidget(QWidget *parent)
 	: QWidget(parent)

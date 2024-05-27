@@ -8,7 +8,6 @@
 
 #include "user.h"
 #include "dbData.h"
-#include "custombasicdialog.h"
 
 chooseWorkerDialog::chooseWorkerDialog(QWidget* parent)
 	: QDialog(parent)

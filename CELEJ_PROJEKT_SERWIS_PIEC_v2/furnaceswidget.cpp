@@ -8,8 +8,6 @@
 
 #include "user.h"
 #include "dbData.h"
-#include "custombasicdialog.h"
-#include "yesnodialog.h"
 #include "addfurnacedialog.h"
 #include "editfurnacedialog.h"
 #include <fstream>
