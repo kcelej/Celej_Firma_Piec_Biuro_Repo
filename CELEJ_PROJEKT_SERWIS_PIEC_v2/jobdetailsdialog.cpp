@@ -252,6 +252,9 @@ void jobDetailsDialog::on_workerChangeButton_clicked() {
 	try {
 		chooseWorkerDialog chooseWorker(this);
 		if (chooseWorker.exec()) {
+			if (!chooseWorker.workerTable->currentItem()) {
+				throw exception();
+			}
 			QString workerId = chooseWorker.workerTable->currentItem()->data(Qt::UserRole).toString();
 
 			sql::Driver* driver;
@@ -283,12 +286,18 @@ void jobDetailsDialog::on_workerChangeButton_clicked() {
 	catch (sql::SQLException) {
 		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas zmiany pracownika.");
 	}
+	catch (...) {
+		QMessageBox::information(this, "Błąd", "Nie wybrano pracownika!");
+	}
 }
 
 void jobDetailsDialog::on_furnaceChangeButton_clicked() {
 	try {
 		chooseFurnaceDialog chooseFurnace(this);
 		if (chooseFurnace.exec()) {
+			if (!chooseFurnace.furnaceTable->currentItem()) {
+				throw exception();
+			}
 			QString furnaceId = chooseFurnace.furnaceTable->currentItem()->data(Qt::UserRole).toString();
 
 			sql::Driver* driver;
@@ -320,12 +329,18 @@ void jobDetailsDialog::on_furnaceChangeButton_clicked() {
 	catch (sql::SQLException) {
 		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas zmiany pieca.");
 	}
+	catch (...) {
+		QMessageBox::information(this, "Błąd", "Nie wybrano pieca!");
+	}
 }
 
 void jobDetailsDialog::on_customerChangeButton_clicked() {
 	try {
 		chooseCustomerDialog chooseCustomer(this);
 		if (chooseCustomer.exec()) {
+			if (!chooseCustomer.customerTable->currentItem()) {
+				throw exception();
+			}
 			QString customerId = chooseCustomer.customerTable->currentItem()->data(Qt::UserRole).toString();
 
 			sql::Driver* driver;
@@ -356,6 +371,9 @@ void jobDetailsDialog::on_customerChangeButton_clicked() {
 	}
 	catch (sql::SQLException) {
 		QMessageBox::information(this, "Błąd", "Wystąpił problem podczas zmiany klienta.");
+	}
+	catch (...) {
+		QMessageBox::information(this, "Błąd", "Nie wybrano klienta!");
 	}
 }
 
