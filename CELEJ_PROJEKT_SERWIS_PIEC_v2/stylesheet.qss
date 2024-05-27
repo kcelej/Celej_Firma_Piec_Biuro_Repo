@@ -1,5 +1,6 @@
 * {
-	
+	border:none;
+	padding:0;
 }
 
 QMainWindow {
@@ -14,8 +15,39 @@ QDialog{
 	background-color:#cce6ff;
 }
 
+QLabel {
+	font:bold;
+	background-color:#80bfff;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 1em;
+	min-height: 1em;
+    padding: 6px;
+}
+
+QLabel#jobDescriptionLabel, QLabel#jobCommentLabel{
+	min-height: 5em;
+}
+
+jobDetailsDialog QLabel {
+	font:bold;
+	background-color:#80bfff;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: auto;
+	min-height: 1em;
+    padding: 6px;
+}
+
 QLineEdit {
 	background-color:#FFFFFF;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 7em;
+    padding: 6px;
 }
 
 QPushButton {
@@ -53,6 +85,10 @@ QTableCornerButton::section {
 
 QFrame#mainWindowButtonsFrame{
 	background-color:#004d99;
+	height:max;
+	margin-left:0;
+	margin-top:0;
+	margin-bottom:0;
 }
 
 QFrame#jobStatusFrame, QFrame#jobDetailsFrame, QFrame#jobCustomerFrame, QFrame#jobWorkerFrame, QFrame#jobFurnacesFrame {
@@ -62,13 +98,30 @@ QFrame#jobStatusFrame, QFrame#jobDetailsFrame, QFrame#jobCustomerFrame, QFrame#j
 	border-color:#3399ff;
 }
 
-QComboBox{
+
+QFrame#currentUserFrame {
+	background-color:#80bfff;
+}
+
+QFrame#currentUserFrameWithLogout {
+	font:bold;
+	background-color:#80bfff;
 	border-width: 2px;
     border-radius: 10px;
 	border-color:#3399ff;
-    min-width: 5em;
+    min-width: 0;
+    padding: 1px;
+}
+
+QComboBox{
+	font:bold;
+	background-color:#FFFFFF;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 1em;
+	min-height: 1em;
     padding: 6px;
-	background-color: #FFFFFF;
 }
 
 QComboBox::drop-down{
@@ -95,18 +148,46 @@ QDateEdit {
     padding: 6px;
 }
 
-QDateEdit::up-button, QDateEdit::down-button, QDateEdit::up-arrow, QDateEdit::down-arrow{
-	all:initial;
-}
 
 QLabel#widgetLabel {
 	font-size:20px;
 	font:bold;
-	background-color:#3399ff;
+	background-color:#80bfff;
 	border-width: 2px;
     border-radius: 10px;
 	border-color:#3399ff;
     min-width: 5em;
     padding: 6px;
 
+}
+
+QCheckBox {
+	font:bold;
+	background-color:#3399ff;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 7em;
+    padding: 6px;
+}
+
+QMessageBox {
+	background-color:#cce6ff;
+}
+
+QMessageBox QLabel {
+	font:bold;
+	background-color:#cce6ff;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#cce6ff;
+    min-width: -1;
+    padding: 6px;
+}
+
+QLabel#logoLabel{
+	background-color:#cce6ff;
+	all:initial;
+    min-width: -1;
+	border-width: 0;
 }
