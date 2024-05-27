@@ -128,6 +128,7 @@
     <ClCompile Include="user.cpp" />
     <ClCompile Include="workerswidget.cpp" />
     <None Include="ClassDiagram.cd" />
+    <None Include="stylesheet.qss" />
     <QtMoc Include="workerswidget.h" />
     <QtMoc Include="addjobdialog.h" />
     <QtMoc Include="chooseworkerdialog.h" />

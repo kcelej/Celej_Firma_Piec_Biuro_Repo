@@ -1,0 +1,24 @@
+* {
+	
+}
+
+QLineEdit {
+	background-color:#e6e6e6;
+}
+
+QPushButton {
+	background-color:#3399ff;
+	border-width: 2px;
+    border-radius: 10px;
+	border-color:#3399ff;
+    min-width: 5em;
+    padding: 6px;
+}
+
+QMainWindow {
+	background-color:#004d99;
+}
+
+QTable {
+	background-color:#FFFFFF;
+}

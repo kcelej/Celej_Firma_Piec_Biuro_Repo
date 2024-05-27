@@ -1,5 +1,8 @@
 ﻿#include "stdafx.h"
 #include "mainwindow.h"
+#include "QtWidgets/QApplication"
+#include <QtCore>
+#include <qsettings.h>
 
 #include "loginscreen.h"
 
@@ -83,8 +86,17 @@ void mainWindow::login() {
 mainWindow::mainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+    QFile qssFile("stylesheet.qss");
+    qssFile.open(QFile::ReadOnly);
+    QString stylesheet = QLatin1String(qssFile.readAll());
+    setStyleSheet(stylesheet);
+
     ui.setupUi(this);
     try {
+
+        QPixmap logo("logo.png");
+        ui.logoLabel->setScaledContents(true);
+        ui.logoLabel->setPixmap(logo);
         userSingleton& user = userSingleton::instance();
         sql::Driver* driver;
         sql::Connection* con;
@@ -107,7 +119,7 @@ mainWindow::mainWindow(QWidget *parent)
         ui.stackedWidget->addWidget(customers);
         ui.stackedWidget->addWidget(workers);
         ui.stackedWidget->addWidget(furnaces);
-
+        
         login();    // display the login dialog
     }
     catch(sql::SQLException){
