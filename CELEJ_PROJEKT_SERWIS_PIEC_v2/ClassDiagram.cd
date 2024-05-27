@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="userSingleton">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAIAAQIAEAAAAAAEAMIAACAABEBEBAAIAkAgQAEIA=</HashCode>
+      <FileName>user.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="workersWidget">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEEAEAACAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>workerswidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="addJobDialog">
+    <Position X="15" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAgAACIAAAAAAAAAACEAAAABAAAAAAAQEAAAAAA=</HashCode>
+      <FileName>addjobdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="chooseWorkerDialog">
+    <Position X="8.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>chooseworkerdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="chooseFurnaceDialog">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>choosefurnacedialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="customersWidget">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAEEAEAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>customerswidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="addCustomerDialog">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>addcustomerdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="addWorkerDialog">
+    <Position X="13.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>addworkerdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="chooseCustomerDialog">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>choosecustomerdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="addFurnaceDialog">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAgAA=</HashCode>
+      <FileName>addfurnacedialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="jobsWidget">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAEACIAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>jobswidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="reportDialog">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>reportdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="jobDetailsDialog">
+    <Position X="8.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEEAAACIAAAAAAgCAAAAAQBAAAAMIBAAAACA=</HashCode>
+      <FileName>jobdetailsdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="editJobDialog">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>editjobdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="furnacesWidget">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEEAUAAAAAAAAAAAAAABAAAACAAAAAAAAAA=</HashCode>
+      <FileName>furnaceswidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="editFurnaceDialog">
+    <Position X="13.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAIAAAAAAAAAAAAAIAAEAAAABAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>editfurnacedialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mainWindow">
+    <Position X="6.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAACAEAAAAAAAABAAAAAAAAIAAAAAAAAAEBA=</HashCode>
+      <FileName>mainwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="loginScreen">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>loginscreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QDialog">
+    <Position X="10.75" Y="4.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="QDialog::DialogCode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>C:\Qt\6.7.0\msvc2019_64\include\QtWidgets\qdialog.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BACIBAiiQBAAAAAQBABAIAAAAAAEIAAAgAAQgAIgAEA=</HashCode>
+      <FileName>C:\Qt\6.7.0\msvc2019_64\include\QtWidgets\qdialog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QMainWindow" Collapsed="true">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoACQgKYCA0hRAgRkKBY4oAAABEAABuBggAgIAMgACA=</HashCode>
+      <FileName>C:\Qt\6.7.0\msvc2019_64\include\QtWidgets\qmainwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QWidget" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="QWidget::RenderFlag" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>C:\Qt\6.7.0\msvc2019_64\include\QtWidgets\qwidget.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>hA6pAGgYqICSoYVAaL8yqpBimu1GwLWO4PBqCgXdwII=</HashCode>
+      <FileName>C:\Qt\6.7.0\msvc2019_64\include\QtWidgets\qwidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
