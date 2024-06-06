@@ -151,7 +151,7 @@ void reportDialog::on_generateButton_clicked() {
         // create the chart
         QChart* chart = new QChart();
         chart->addSeries(series);
-        chart->setTitle("Liczba zleceń");
+        chart->setTitle("Liczba zleceń w danym miesiącu");
         chart->setAnimationOptions(QChart::SeriesAnimations);
 
         // create the chart's X axis
