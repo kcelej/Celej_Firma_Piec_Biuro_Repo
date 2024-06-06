@@ -19,6 +19,9 @@ Aby aplikacja działała poprawnie należy zmienić konfigurację w plikach:
     post_max_size = 750M
     
 
+Diagram pokazujący strukturę bazy danych:
+![diagram_bazy](database_diagram.png)
+
 Diagram przypadków klas do projektu:
 ![diagram_klas](class_diagram.png)
 
